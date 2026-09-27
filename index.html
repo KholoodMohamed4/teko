@@ -1,0 +1,1231 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Happy Birthday Taqie! 🚀</title>
+
+<style>
+
+:root{
+    --navy:#07152f;
+    --blue:#1677ff;
+    --sky:#48c9ff;
+    --yellow:#ffd84d;
+    --white:#f8fbff;
+    --card:#10254a;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    background:
+        radial-gradient(
+            circle at 50% 0,
+            #164d91 0,
+            #07152f 52%,
+            #030914 100%
+        );
+    color:var(--white);
+    font-family:
+        "Cairo",
+        "Segoe UI",
+        Tahoma,
+        sans-serif;
+    overflow-x:hidden;
+}
+
+.screen{
+    min-height:100svh;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:18px;
+}
+
+.screen.active{
+    display:flex;
+}
+
+.card{
+    width:min(720px,94vw);
+    background:#0c2042ed;
+    border:2px solid #ffffff18;
+    border-radius:28px;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 20px 60px #0009;
+}
+
+h1{
+    font-size:clamp(2.2rem,10vw,4.3rem);
+    line-height:1.1;
+    margin:10px 0 18px;
+}
+
+h2{
+    font-size:clamp(1.7rem,7vw,2.7rem);
+    line-height:1.3;
+    margin:5px 0 12px;
+}
+
+p{
+    line-height:1.8;
+    color:#d9e7ff;
+}
+
+.yellow{
+    color:var(--yellow);
+}
+
+.sky{
+    color:var(--sky);
+}
+
+.btn{
+    border:0;
+    border-radius:999px;
+    padding:13px 22px;
+    margin:6px;
+    background:
+        linear-gradient(
+            90deg,
+            #1677ff,
+            #48c9ff
+        );
+    color:white;
+    font-weight:900;
+    box-shadow:0 8px 25px #1677ff55;
+    cursor:pointer;
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 30px #1677ff77;
+}
+
+.btn:active{
+    transform:scale(.96);
+}
+
+.btn.alt{
+    background:#ffffff12;
+    border:1px solid #ffffff20;
+}
+
+.trophy{
+    width:min(230px,65vw);
+    border-radius:22px;
+    max-height:300px;
+    object-fit:cover;
+    box-shadow:0 14px 35px #0008;
+    border:2px solid #ffffff18;
+}
+
+.cartoon{
+    width:min(390px,88vw);
+    max-height:330px;
+    object-fit:contain;
+}
+
+.game{
+    position:relative;
+    width:100%;
+    height:330px;
+    border-radius:22px;
+    overflow:hidden;
+    background:
+        linear-gradient(
+            #0e3b70,
+            #06142b
+        );
+    border:1px solid #ffffff15;
+    margin-top:15px;
+    touch-action:none;
+}
+
+.star{
+    position:absolute;
+    font-size:32px;
+    cursor:pointer;
+    user-select:none;
+    -webkit-tap-highlight-color:transparent;
+    animation:pop 1.1s ease-in-out infinite;
+}
+
+.rocket{
+    position:absolute;
+    font-size:52px;
+    bottom:28px;
+    left:18%;
+    transition:left .15s;
+    user-select:none;
+}
+
+@keyframes pop{
+
+    50%{
+        transform:
+            scale(1.25)
+            rotate(8deg);
+    }
+
+}
+
+.hud{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:#cfe2ff;
+    margin:7px;
+    gap:10px;
+}
+
+.hearts{
+    position:relative;
+    height:100px;
+    margin-top:8px;
+    overflow:hidden;
+}
+
+.heart{
+    position:absolute;
+    font-size:28px;
+    animation:
+        heartUp
+        2.4s
+        ease-out
+        forwards;
+}
+
+@keyframes heartUp{
+
+    0%{
+        transform:
+            translateY(25px)
+            scale(.5);
+        opacity:0;
+    }
+
+    15%{
+        opacity:1;
+    }
+
+    100%{
+        transform:
+            translateY(-100px)
+            translateX(var(--x))
+            scale(1.15);
+        opacity:0;
+    }
+
+}
+
+.pop{
+    animation:
+        popIn
+        .55s
+        cubic-bezier(.2,1.5,.5,1);
+}
+
+@keyframes popIn{
+
+    0%{
+        transform:scale(.2);
+        opacity:0;
+    }
+
+    100%{
+        transform:scale(1);
+        opacity:1;
+    }
+
+}
+
+.message{
+    font-size:
+        clamp(
+            1.15rem,
+            4vw,
+            1.5rem
+        );
+    font-weight:700;
+}
+
+.tiny{
+    font-size:.9rem;
+    color:#91a9cc;
+    line-height:1.8;
+}
+
+#fx{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:20;
+}
+
+.burst{
+    position:absolute;
+    font-size:25px;
+    animation:
+        burst
+        1.5s
+        ease-out
+        forwards;
+}
+
+@keyframes burst{
+
+    0%{
+        transform:
+            translate(0,0)
+            scale(.3);
+        opacity:0;
+    }
+
+    15%{
+        opacity:1;
+    }
+
+    100%{
+        transform:
+            translate(var(--dx),var(--dy))
+            scale(1.15);
+        opacity:0;
+    }
+
+}
+
+
+/* =========================
+   📱 MOBILE
+========================= */
+
+@media (max-width:600px){
+
+    .screen{
+        min-height:100svh;
+        padding:12px;
+    }
+
+    .card{
+        width:100%;
+        padding:20px 16px;
+        border-radius:22px;
+    }
+
+    h1{
+        font-size:
+            clamp(
+                2rem,
+                12vw,
+                3.2rem
+            );
+        line-height:1.15;
+        margin:8px 0 16px;
+    }
+
+    h2{
+        font-size:
+            clamp(
+                1.5rem,
+                8vw,
+                2.2rem
+            );
+        line-height:1.3;
+    }
+
+    p{
+        font-size:.95rem;
+        line-height:1.85;
+    }
+
+    .message{
+        font-size:1.05rem;
+        line-height:1.8;
+    }
+
+    .trophy{
+        width:min(190px,65vw);
+        max-height:240px;
+    }
+
+    .cartoon{
+        width:min(320px,90vw);
+        max-height:270px;
+    }
+
+    .btn{
+        width:90%;
+        max-width:320px;
+        padding:13px 18px;
+        font-size:.95rem;
+        margin:5px auto;
+        display:block;
+    }
+
+    .hud{
+        font-size:.85rem;
+        margin:7px 2px;
+    }
+
+    .game{
+        height:260px;
+        margin-top:12px;
+    }
+
+    .rocket{
+        font-size:42px;
+        bottom:20px;
+    }
+
+    .star{
+        font-size:27px;
+    }
+
+    .hearts{
+        height:85px;
+    }
+
+    .tiny{
+        font-size:.78rem;
+    }
+
+}
+
+
+/* =========================
+   📱 VERY SMALL PHONES
+========================= */
+
+@media (max-width:380px){
+
+    .screen{
+        padding:8px;
+    }
+
+    .card{
+        padding:17px 13px;
+        border-radius:20px;
+    }
+
+    h1{
+        font-size:2rem;
+    }
+
+    h2{
+        font-size:1.5rem;
+    }
+
+    p{
+        font-size:.88rem;
+    }
+
+    .message{
+        font-size:1rem;
+    }
+
+    .game{
+        height:230px;
+    }
+
+    .trophy{
+        width:160px;
+    }
+
+    .cartoon{
+        width:270px;
+    }
+
+}
+
+
+/* =========================
+   📲 TABLETS
+========================= */
+
+@media (min-width:601px) and (max-width:900px){
+
+    .card{
+        width:min(680px,92vw);
+    }
+
+    .game{
+        height:310px;
+    }
+
+}
+
+
+/* =========================
+   📱 TOUCH DEVICES
+========================= */
+
+@media (hover:none){
+
+    .btn:hover{
+        transform:none;
+        box-shadow:
+            0 8px 25px #1677ff55;
+    }
+
+    .star{
+        cursor:pointer;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div id="fx"></div>
+
+
+<!-- =========================
+     🎂 START
+========================= -->
+
+<section
+    class="screen active"
+    id="s0"
+>
+
+<div class="card">
+
+<img
+    class="trophy"
+    src="Teko.png"
+    alt="Taqie with his trophy"
+>
+
+<h1>
+
+    كل سنة وانت طيب<br>
+
+    <span class="yellow">
+        يا تيكو! 🤩❤️
+    </span>
+
+</h1>
+
+<p>
+
+    جاهز لمغامرة صغيرة
+    مخصوصة لأشطر تيكو
+    وأحلى مبرمج؟ 🚀💙
+
+</p>
+
+<button
+    class="btn"
+    onclick="go(1);burst()"
+>
+
+    يلا يا بطل نلعب 💪🏻
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     🚀 GAME
+========================= -->
+
+<section
+    class="screen"
+    id="s1"
+>
+
+<div class="card">
+
+<h2>
+
+    🚀 يلا يا تيكو لمّ النجوم
+
+</h2>
+
+<p>
+
+    فاكر لما كنا بنعمل ألعاب سوا؟ 😎<br>
+
+    دلوقتي عندك مهمة صغيرة يا بطل...<br>
+
+    اجمع <b>7 نجوم</b>
+    عشان نفتح المفاجأة اللي بعدها ⭐
+
+</p>
+
+
+<div class="hud">
+
+<span>
+
+    ⭐
+    <b id="score">0</b>/7
+
+</span>
+
+<span>
+
+اضغط علي النجوم يلا يا تيكو وجمعهم 🤩❤️
+</span>
+
+</div>
+
+
+<div
+    class="game"
+    id="arena"
+>
+
+<div
+    class="rocket"
+    id="rocket"
+>
+
+    🚀
+
+</div>
+
+</div>
+
+
+<button
+    class="btn alt"
+    onclick="spawnStars()"
+>
+
+   تحب تظهر نجوم تاني 👀⭐
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     🏆 MEMORIES
+========================= -->
+
+<section
+    class="screen"
+    id="s2"
+>
+
+<div class="card">
+
+<h2>
+
+    🏆 تيكو المبرمج الشاطر
+
+</h2>
+
+
+<p class="message">
+
+    عارف إيه أكتر حاجة
+    بحبها فيك يا تيكو؟ ❤️
+
+</p>
+
+
+<p>
+
+    إنك عمرك ما كنت بتكتفي
+    إن الحاجة تشتغل وخلاص...
+
+    كنت دايمًا تسأل:
+
+    <b>
+        ليه؟ وإزاي؟
+        وطب لو عملنا كذا؟
+    </b>
+
+    😂❤️
+
+</p>
+
+
+<p>
+
+    وفاكرة قد إيه كنت بتتبسط
+    لما اللعبة تشتغل زي ما أنت عايز،
+
+    وكنت بتحب تجرب وتلعب
+    وتكتشف كل حاجة بنفسك. 🚀
+<br>
+    حقيقي انا كنت مبسوطه في كل سيشن معاك 🥹💙
+</p>
+
+
+<p class="yellow">
+
+    PictoBlox ✔️
+    &nbsp;
+    mBlock ✔️
+    &nbsp;
+    Programming ✔️
+
+</p>
+
+
+<div
+    class="hearts"
+    id="hearts"
+></div>
+
+
+<button
+    class="btn"
+    onclick="makeHearts();burst()"
+>
+
+    إيه ده؟!
+    القلوب دي كلها عشان تيكو؟ 👀❤️
+
+</button>
+
+
+<button
+    class="btn alt"
+    onclick="go(3)"
+>
+
+    يلا نكمل المفاجأة →
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     ❤️ ENCOURAGEMENT
+========================= -->
+
+<section
+    class="screen"
+    id="s3"
+>
+
+<div class="card">
+
+
+<img
+    class="cartoon pop"
+    src="Kholood & Teko.png"
+    alt="Taqie and his tutor cartoon"
+>
+
+
+<h2 class="sky">
+
+    يا تيكو...
+    إنت بجد شاطر أوي! 😭❤️
+
+</h2>
+
+
+<p class="message">
+
+    كل مرة كنت بتعمل فيها
+    حاجة حلوة،
+
+    كنت ببقى عايزة أسقفلك
+    وأقولك:
+
+    <b>
+        برافو يا اشطر تيكو في الدنيا! 👏❤️
+    </b>
+
+</p>
+
+
+
+
+<p>
+
+    وفاكرة طبعًا
+    لعب الـ XO بتاعنا 😂
+ اللي علي طول كنت بتغلبني فيها
+    بس خليني أقولك حاجة...
+
+    <b>
+       اوقات كنت بسيبك تكسب بمزاجي  😂🏆
+    </b>
+
+</p>
+
+
+<p>
+
+    بس بعيدًا عن الهزار...
+
+    أنا بجد فخورة
+    بكل حاجة اتعلمتها
+    وكل مرة حاولت فيها
+    تفهم حاجة جديدة.
+
+    <br><br>
+
+    كمّل يا بطل،
+    ومتخليش أي حاجة توقفك. 🚀💙
+
+</p>
+
+
+<button
+    class="btn"
+    onclick="go(4);burst()"
+>
+
+    آخر مفاجأة يا تيكو 🎁❤️
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     🎂 FINAL
+========================= -->
+
+<section
+    class="screen"
+    id="s4"
+>
+
+<div class="card">
+
+
+<h1>
+
+    ❤️ يا تيكو ❤️
+
+</h1>
+
+
+<p class="message">
+
+    أنا بجد فخورة بيك جدًا.
+
+</p>
+
+
+<p>
+
+    إنت طفل فضولي،
+    شاطر، دمك خفيف،
+
+    وعندك فضول يخليك
+    دايمًا عايز تعرف
+    وتجرب حاجات جديدة. ❤️
+
+</p>
+
+
+<p>
+
+    وأتمنى تفضل دايمًا تسأل،
+    وتجرب، وتغلط،
+    وتحاول تاني...
+
+    لحد ما توصل
+    للحاجة اللي نفسك فيها.
+
+</p>
+
+
+<p class="yellow">
+
+    كمّل تسأل.<br>
+
+    كمّل تتعلم.<br>
+
+    كمّل تعمل حاجات جديدة.<br>
+
+    وكمّل تبقى تيكو
+    اللي أنا عارفاه. 🚀💙
+
+</p>
+
+
+<p class="message">
+
+    كل سنة وانت طيب
+    يا أشطر تيكو
+    وأحلى بطل! 🎂🏆❤️
+
+</p>
+
+
+<div
+    class="hearts"
+    id="finalHearts"
+></div>
+
+
+<button
+    class="btn"
+    onclick="makeFinalHearts();burst()"
+>
+
+    ❤️❤️❤️
+
+</button>
+
+
+<p class="tiny">
+
+    لتلميذي النجيب
+    وأشطر تيكو ❤️
+
+    <br>
+
+    مع كل حبي وفخري بيك،
+    <b>Miss Kholood</b> 💙
+
+</p>
+
+
+</div>
+
+</section>
+
+
+<script>
+
+
+let cur = 0;
+
+let score = 0;
+
+let rx = 18;
+
+
+const screens = [
+    ...document.querySelectorAll('.screen')
+];
+
+
+function go(n){
+
+    screens[cur]
+        .classList
+        .remove('active');
+
+    cur = n;
+
+    screens[cur]
+        .classList
+        .add('active');
+
+    window.scrollTo(0,0);
+
+
+    if(n === 1){
+
+        spawnStars();
+
+    }
+
+}
+
+
+
+function burst(){
+
+    const fx =
+        document.getElementById('fx');
+
+
+    const icons = [
+        '🤩',
+        '⭐',
+        '😍',
+        '🎉',
+        '💙',
+        '💛',
+        '🎂'
+    ];
+
+
+    for(let i = 0; i < 32; i++){
+
+        let e =
+            document.createElement('span');
+
+
+        e.className =
+            'burst';
+
+
+        e.textContent =
+            icons[
+                Math.floor(
+                    Math.random() *
+                    icons.length
+                )
+            ];
+
+
+        e.style.left =
+            (45 + Math.random() * 10)
+            + 'vw';
+
+
+        e.style.top =
+            (38 + Math.random() * 12)
+            + 'vh';
+
+
+        e.style.setProperty(
+            '--dx',
+            ((Math.random() - .5) * 75)
+            + 'vw'
+        );
+
+
+        e.style.setProperty(
+            '--dy',
+            ((Math.random() - .55) * 70)
+            + 'vh'
+        );
+
+
+        fx.appendChild(e);
+
+
+        setTimeout(
+            () => e.remove(),
+            1600
+        );
+
+    }
+
+}
+
+
+
+function spawnStars(){
+
+    const arena =
+        document.getElementById('arena');
+
+
+    arena
+        .querySelectorAll('.star')
+        .forEach(
+            x => x.remove()
+        );
+
+
+    score = 0;
+
+
+    document.getElementById('score')
+        .textContent = 0;
+
+
+    for(let i = 0; i < 7; i++){
+
+        let star =
+            document.createElement('span');
+
+
+        star.className =
+            'star';
+
+
+        star.textContent =
+            ['⭐','🌟','✨'][i % 3];
+
+
+        star.style.left =
+            (8 + Math.random() * 84)
+            + '%';
+
+
+        star.style.top =
+            (10 + Math.random() * 70)
+            + '%';
+
+
+        star.onclick = () => {
+
+            star.remove();
+
+
+            score++;
+
+
+            document.getElementById('score')
+                .textContent = score;
+
+
+            burst();
+
+
+            if(score === 7){
+
+                setTimeout(
+                    () => go(2),
+                    500
+                );
+
+            }
+
+        };
+
+
+        arena.appendChild(star);
+
+    }
+
+}
+
+
+
+document.addEventListener(
+    'keydown',
+    e => {
+
+        if(cur !== 1){
+            return;
+        }
+
+
+        if(e.key === 'ArrowLeft'){
+
+            rx =
+                Math.max(
+                    2,
+                    rx - 5
+                );
+
+        }
+
+
+        if(e.key === 'ArrowRight'){
+
+            rx =
+                Math.min(
+                    82,
+                    rx + 5
+                );
+
+        }
+
+
+        document
+            .getElementById('rocket')
+            .style.left =
+            rx + '%';
+
+    }
+);
+
+
+
+function makeHearts(
+    target = 'hearts'
+){
+
+    let box =
+        document.getElementById(target);
+
+
+    for(let i = 0; i < 18; i++){
+
+        let heart =
+            document.createElement('span');
+
+
+        heart.className =
+            'heart';
+
+
+        heart.textContent =
+            [
+                '❤️',
+                '💙',
+                '💛',
+                '💖'
+            ][i % 4];
+
+
+        heart.style.left =
+            (8 + Math.random() * 84)
+            + '%';
+
+
+        heart.style.bottom =
+            (Math.random() * 15)
+            + 'px';
+
+
+        heart.style.setProperty(
+            '--x',
+            ((Math.random() - .5) * 80)
+            + 'px'
+        );
+
+
+        heart.style.animationDelay =
+            (Math.random() * .8)
+            + 's';
+
+
+        box.appendChild(heart);
+
+
+        setTimeout(
+            () => heart.remove(),
+            3300
+        );
+
+    }
+
+}
+
+
+
+function makeFinalHearts(){
+
+    makeHearts('finalHearts');
+
+    burst();
+
+}
+
+
+</script>
+
+</body>
+
+</html>
